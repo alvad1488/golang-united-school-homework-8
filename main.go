@@ -15,7 +15,7 @@ import (
 const FLAG_ID string = "id"
 const FLAG_OPERATION string = "operation"
 const FLAG_ITEM string = "item"
-const FLAG_FILENAME string = "filename"
+const FLAG_FILENAME string = "fileName"
 
 //Allowed operation types
 const OPERATION_ADD string = "add"
@@ -74,10 +74,10 @@ func checkFlags(args Arguments) error {
 	var (
 		id, item, operation, filename string
 	)
-	id = args["id"]
-	item = args["item"]
-	operation = args["operation"]
-	filename = args["fileName"]
+	id = args[FLAG_ID]
+	item = args[FLAG_ITEM]
+	operation = args[FLAG_OPERATION]
+	filename = args[FLAG_FILENAME]
 
 	if operation == "" {
 		return errorEmptyOperation
@@ -123,10 +123,10 @@ func parseArgs() (Arguments, error) {
 
 	//init map
 	argv = make(Arguments)
-	argv["id"] = id
-	argv["operation"] = operation
-	argv["item"] = item
-	argv["fileName"] = filename
+	argv[FLAG_ID] = id
+	argv[FLAG_OPERATION] = operation
+	argv[FLAG_ITEM] = item
+	argv[FLAG_FILENAME] = filename
 
 	return argv, nil
 }
